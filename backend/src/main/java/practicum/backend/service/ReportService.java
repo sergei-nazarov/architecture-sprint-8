@@ -17,6 +17,7 @@ public class ReportService {
     private final CurrentUserService currentUserService;
     private final Random random = new Random();
 
+    @Secured({"prothetic_user"})
     public Report generateReport() {
         var currentUser = currentUserService.getCurrentUser().orElseThrow(() -> new IllegalStateException("User not found"));
         return new Report(
